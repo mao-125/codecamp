@@ -17,3 +17,10 @@ Route::get('/', function () {
 
 Route::resource('posts', 'PostController');
 Auth::routes();
+
+Route::resource('users', 'UserController')->only([
+  'show',
+]);
+Route::resource('follows', 'FollowController')->only([
+  'store', 'destroy'
+]);
