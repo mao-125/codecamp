@@ -5,8 +5,18 @@
 @section('content')
   <h1>{{ $title }}</h1>
   
+  <h2>おすすめユーザー</h2>
+  <ul class="recommend_users">
+    @forelse($recommend_users as $recommend_user)
+      <li><a href="{{ route('users.show', $recommend_user) }}">{{ $recommend_user->name }}</a></li>
+    @empty
+      <li>他のユーザーが存在しません。</li>
+    @endforelse
+  </ul>
+  
+  <h2>タイムライン</h2>
   <ul class="posts">
-      @forelse($posts as $post)
+      @forelse($user_posts as $post)
           <li class="post">
               <div class="post_body">
                 <div class="post_body_heading">
@@ -18,14 +28,17 @@
                     {!! nl2br(e($post->comment)) !!}
                 </div>
                 
-                <div class="post_body_footer">
+              @if($post->user->id === Auth::user()->id)
+                 <div class="post_body_footer">
                   [<a href="{{ route('posts.edit', $post) }}">編集</a>]
                   <form class="delete" method="post" action="{{ route('posts.destroy', $post) }}">
                     @csrf
                     @method('DELETE')
                     <input type="submit" value="削除">
                   </form>
-                </div>
+                 </div>
+               @else
+               @endif
                </div>
           </li>
           
