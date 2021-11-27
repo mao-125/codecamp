@@ -15,15 +15,25 @@ class PostController extends Controller
         $this->middleware('auth');
     } 
     
-    public function index()
+    public function index(Request $request)
     {
         $user = \Auth::user();
         $follow_user_ids = $user->follow_users->pluck('id');
         $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids)->latest()->paginate(5);
+        
+        $keyword = $request->input('keyword');
+        $query = Post::query();
+        if (!empty($keyword)) {
+            $query->where('comment', 'LIKE', "%{$keyword}%");
+        }
+        $posts = $query->get();
+        
         return view('posts.index', [
           'title' => '投稿一覧',
           'user_posts' => $user_posts,
-          'recommend_users' => User::recommend($user->id, '!=', $follow_user_ids)->get()
+          'keyword' => $keyword,
+          'posts' => $posts,
+          'recommend_users' => User::recommend($user->id, '!=', $follow_user_ids)->get(),
           ]);
     }
 
