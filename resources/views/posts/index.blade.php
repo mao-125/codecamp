@@ -5,6 +5,19 @@
 @section('content')
   <h1>{{ $title }}</h1>
   
+  <form action="{{ route('posts.index') }}" method="GET">
+    <p><input type="serch" name="keyword" value="{{$keyword}}"></p>
+    <p><input type="submit" value="検索"></p>
+  </form>
+  
+  <ul>
+  @forelse($posts as $post)
+  <li>{{ $post->comment }}</li>
+  @empty
+  <li>検索結果なし</li>
+  @endforelse
+  </ul>
+
   <h2>おすすめユーザー</h2>
   <ul class="recommend_users">
     @forelse($recommend_users as $recommend_user)
