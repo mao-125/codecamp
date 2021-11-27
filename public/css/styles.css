@@ -1,0 +1,25 @@
+.header_nav {
+  display: flex;
+  list-style: none;
+}
+.header_nav li {
+  margin: 10px;
+}
+.header_left, .header_right {
+  display: flex;
+}
+.header_left a {
+  text-decoration: none;
+}
+.header_right {
+  margin-left: auto;
+}
+.error {
+  color: red;
+}
+.success {
+  color: green;
+}
+.delete {
+  display: inline;
+}
