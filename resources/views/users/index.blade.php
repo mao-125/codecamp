@@ -5,9 +5,11 @@
 @section('content')
   <h1>{{ $title }}</h1>
   
-  ユーザー名：{{ $users->name }}
-  
-  @if(Auth::user()->isFollowing($users))
+ （アイコン）ユーザー名：{{ $users->name }}<br>
+ 
+ @if(Auth::user() == $users)
+ 
+ @elseif(Auth::user()->isFollowing($users))
          <form method="post" action="{{route('follows.destroy', $users) }}" class="follow">
            @csrf
            @method('delete')
@@ -20,7 +22,13 @@
            <input type="submit" value="フォロー">
          </form>
         @endif 
-        
+  
+[<a href="{{ route('follows.index', $users) }}">フォロー</a>]
+[<a href="{{ route('follows.follower', $users) }}">フォロワー</a>]
+<br>
+　（プロフィール文）<br>
+　（いいね一覧）<br>
+　
   <ul class="posts">
       @forelse($posts as $post)
           <li class="post">

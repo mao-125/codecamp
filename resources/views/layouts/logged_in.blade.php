@@ -13,6 +13,12 @@
       
       <div class="header_right">
         <li>
+          <form action="{{ route('users.show',\Auth::user()) }}">
+            @csrf
+            <input type="submit" value="プロフィール">
+          </form>
+        </li>
+        <li>
           <form action="{{ route('posts.create') }}">
             @csrf
             <input type="submit" value="新規投稿">
