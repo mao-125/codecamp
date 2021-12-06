@@ -26,3 +26,13 @@ Route::resource('follows', 'FollowController')->only([
 ]);
 Route::get('/follow/{user}', 'FollowController@index')->name('follows.index');
 Route::get('/follower/{user}', 'FollowController@followerIndex')->name('follows.follower');
+
+Route::get('likes', 'LikeController@index')->name('likes.index');
+Route::patch('/posts/{post}/toggle_like', 'PostController@toggleLike')->name('posts.toggle_like');
+
+Route::get('/posts/{post}/edit_image', 'PostController@editImage')->name('posts.edit_image');
+Route::patch('/posts/{post}/edit_image', 'PostController@updateImage')->name('posts.update_image');
+
+Route::resource('comments', 'CommentController')->only([
+  'store', 'destroy'
+]);

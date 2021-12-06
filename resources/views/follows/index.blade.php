@@ -11,9 +11,9 @@
             <a href="{{ route('users.show',$follow_user) }}">{{ $follow_user->name }}</a>
             @if($user === \Auth::user())
              <form method="post" action="{{route('follows.destroy', $follow_user)}}" class="follow">
-             @csrf
-             @method('delete')
-             <input type="submit" value="フォロー解除">
+                @csrf
+                @method('delete')
+                <input type="submit" value="フォロー解除">
              </form>
             @else
             @endif

@@ -12,7 +12,12 @@
               <textarea type="text" name="comment" rows="5" cols="50"></textarea>
           </label>
       </div>
-      
+      <div>
+          <label>
+            画像:
+            <input type="file" name="image">
+          </label>
+      </div>
       <input type="submit" value="投稿">
   </form>
 @endsection
