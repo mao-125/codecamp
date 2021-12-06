@@ -23,11 +23,11 @@
          </form>
         @endif 
   
-[<a href="{{ route('follows.index', $users) }}">フォロー</a>]
-[<a href="{{ route('follows.follower', $users) }}">フォロワー</a>]
-<br>
+ [<a href="{{ route('follows.index', $users) }}">フォロー</a>]
+ [<a href="{{ route('follows.follower', $users) }}">フォロワー</a>]
+ <br>
 　（プロフィール文）<br>
-　（いいね一覧）<br>
+　<a href="{{ route('likes.index') }}">いいね一覧</a><br>
 　
   <ul class="posts">
       @forelse($posts as $post)
@@ -39,13 +39,21 @@
                 </div>
                 
                 <div class="post_body_main">
+                  <div class="post_body_main_img">
+                    @if($post->image !== '')
+                        <img src="{{ \Storage::url($post->image) }}">
+                    @else
+                        <img src="{{ asset('images/no_image.png') }}">
+                    @endif
+                　</div>
+                　<div class="post_body_main_comment">
                     {!! nl2br(e($post->comment)) !!}
+                  </div>  
                 </div>
+              </div>    
           </li>
-          
       @empty
           <li>投稿はありません。</li>
       @endforelse
   </ul>        
-        
 @endsection        
