@@ -36,3 +36,8 @@ Route::patch('/posts/{post}/edit_image', 'PostController@updateImage')->name('po
 Route::resource('comments', 'CommentController')->only([
   'store', 'destroy'
 ]);
+
+Route::get('/users/edit/{user}', 'UserController@edit')->name('users.edit');
+Route::patch('/users/{user}', 'UserController@update')->name('users.update');
+Route::get('/users/edit_image/{user}', 'UserController@editImage')->name('users.edit_image');
+Route::patch('/users/edit_image/{user}', 'UserController@updateImage')->name('users.update_image');

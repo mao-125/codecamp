@@ -151,6 +151,7 @@ return [
       'password' => 'パスワード',
       'comment' => 'コメント',
       'image ' => '画像',
+      'profile' => 'プロフィール',
     ],
 
 ];

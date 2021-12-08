@@ -5,8 +5,13 @@
 @section('content')
   <h1>{{ $title }}</h1>
   
- （アイコン）ユーザー名：{{ $users->name }}<br>
- 
+  @if($users->image !== '')
+    <img src="{{ \Storage::url($users->image) }}">
+  @else
+    <img src="{{ asset('images/no_image.png') }}">
+  @endif
+  ユーザー名：{{ $users->name }}<br>
+  
  @if(Auth::user() == $users)
  
  @elseif(Auth::user()->isFollowing($users))
@@ -26,8 +31,15 @@
  [<a href="{{ route('follows.index', $users) }}">フォロー</a>]
  [<a href="{{ route('follows.follower', $users) }}">フォロワー</a>]
  <br>
-　（プロフィール文）<br>
+ プロフィール文：<br>
+　{{ $users->profile }}<br>
 　<a href="{{ route('likes.index') }}">いいね一覧</a><br>
+　
+　@if(Auth::user() == $users)
+　  [<a href="{{ route('users.edit',$users) }}">プロフィール編集</a>]
+　  [<a href="{{ route('users.edit_image', $users) }}">画像変更</a>]
+　@else
+　@endif
 　
   <ul class="posts">
       @forelse($posts as $post)
