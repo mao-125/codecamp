@@ -41,3 +41,8 @@ Route::get('/users/edit/{user}', 'UserController@edit')->name('users.edit');
 Route::patch('/users/{user}', 'UserController@update')->name('users.update');
 Route::get('/users/edit_image/{user}', 'UserController@editImage')->name('users.edit_image');
 Route::patch('/users/edit_image/{user}', 'UserController@updateImage')->name('users.update_image');
+
+Route::get('posts.search', 'PostController@search')->name('posts.search');
+Route::get('users/recommend/{user}', 'UserController@recommend')->name('users.recommend');
+
+Route::get('/', 'PostController@index')->name('posts.index');

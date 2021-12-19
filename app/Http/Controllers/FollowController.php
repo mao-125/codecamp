@@ -8,7 +8,11 @@ use Illuminate\Http\Request;
 
 class FollowController extends Controller
 {
-    // フォロー一覧
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
+    
     public function index(User $user)
     {
         $follow_users = $user->follow_users;
@@ -18,7 +22,7 @@ class FollowController extends Controller
           'user' => $user,
         ]);
     }
-    // フォロワー一覧
+    
     public function followerIndex(User $user)
     {
         $followers = $user->followers;

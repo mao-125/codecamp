@@ -2,35 +2,39 @@
  
 @section('header')
 <header>
-    <ul class="header_nav">
+    <ul class="header_nav container">
       <div class="header_left">
         <li>
-           <a href="{{ route('posts.index') }}">
-            マイクロブログ
-           </a>  
+          <a href="{{ route('posts.index') }}">
+             nekoneko
+          </a>  
         </li>
       </div>
       
       <div class="header_right">
         <li>
-          <form action="{{ route('users.show',\Auth::user()) }}">
-            @csrf
-            <input type="submit" value="プロフィール">
-          </form>
+          <a href="{{ route('users.show',\Auth::user()) }}" class="btn">
+            プロフィール
+          </a>
         </li>
         <li>
-          <form action="{{ route('posts.create') }}">
-            @csrf
-            <input type="submit" value="新規投稿">
-          </form>
+          <a href="{{ route('posts.create') }}" class="btn">
+            新規投稿
+          </a>
         </li>
         <li>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <input type="submit" value="ログアウト">
+            <input type="submit" value="ログアウト" class="btn">
           </form>
         </li>
       </div>  
     </ul>
 </header>
+
+@section('footer')
+<footer class="footer">
+  <small>&copy; 2021 nekoneko</small>
+</footer>
+
 @endsection

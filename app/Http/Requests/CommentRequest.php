@@ -26,7 +26,6 @@ class CommentRequest extends FormRequest
         return [
             'post_id' => ['required'],
             'body' => ['required', 'max:100'],
-
         ];
     }
 }

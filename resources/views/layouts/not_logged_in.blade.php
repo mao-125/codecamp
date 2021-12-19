@@ -4,12 +4,12 @@
 <header>
     <ul class="header_nav">
         <li>
-          <a href="{{ route('register') }}">
+          <a href="{{ route('register') }}" class="btn">
             サインアップ
           </a>
         </li>
         <li>
-          <a href="{{ route('login') }}">
+          <a href="{{ route('login') }}" class="btn">
             ログイン
           </a>
         </li>

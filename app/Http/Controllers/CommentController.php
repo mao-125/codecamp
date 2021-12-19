@@ -8,7 +8,13 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(CommentRequest $request){
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
+    
+    public function store(CommentRequest $request)
+    {
         Comment::create([
             'post_id'   => $request->post_id,
             'user_id' => \Auth::user()->id,

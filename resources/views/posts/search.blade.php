@@ -5,7 +5,7 @@
   <h1>{{ $title }}</h1>
  
   <ul class="posts">
-    @forelse($like_posts as $post)
+    @forelse($search_posts as $post)
       <li class="post">
         <div class="post_body">
           <div class="post_heading">
@@ -13,27 +13,28 @@
             ({{ $post->created_at }})
           </div>
                 
-        <div class="post_main">
-          <div class="post_main_image">
-            @if($post->image !== '')
-              <img src="{{ \Storage::url($post->image) }}">
-            @else
-              <img src="{{ asset('images/no_image.png') }}">
-            @endif
-          </div>  
-          <div class="post_main_comment">
+          <div class="post_main">
+            <div class="post_main_image">
+              @if($post->image !== '')
+                <img src="{{ \Storage::url($post->image) }}">
+              @else
+                <img src="{{ asset('images/no_image.png') }}">
+              @endif
+            </div>  
+            <div class="post_main_comment">
              {!! nl2br(e($post->comment)) !!}
-          </div> 
+            </div>
+          </div>  
                 
-        <a class="like_button">{{ $post->isLikedBy(Auth::user()) ? '★' : '☆' }}</a>
-          <form method="post" class="like" action="{{ route('posts.toggle_like', $post) }}">
+          <a class="like_button">{{ $post->isLikedBy(Auth::user()) ? '★' : '☆' }}</a>
+            <form method="post" class="like" action="{{ route('posts.toggle_like', $post) }}">
               @csrf
               @method('patch')
-          </form>
+            </form>
        </div>
       </li>
     @empty
-      <li>いいねした投稿はありません。</li>
+      <li>検索結果はありません。</li>
     @endforelse
   </ul>
 </div>  
