@@ -152,6 +152,7 @@ return [
       'comment' => 'コメント',
       'image ' => '画像',
       'profile' => 'プロフィール',
+      'body' => 'コメント',
     ],
 
 ];

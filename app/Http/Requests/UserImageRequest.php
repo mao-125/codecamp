@@ -28,7 +28,7 @@ class UserImageRequest extends FormRequest
                 'file' => 'max:200', 
                 'image', 
                 'mimes:jpeg,jpg,png', 
-                'dimensions:min_width=50,min_height=50,max_width=200,max_height=200',
+                'dimensions:min_width=100,min_height=100,max_width=1500,max_height=1500',
                 ]
         ];
     }

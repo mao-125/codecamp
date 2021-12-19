@@ -16,7 +16,6 @@ class AddColumnsToUsers extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('profile')->default('');
             $table->string('image')->default('');
-
         });
     }
 
